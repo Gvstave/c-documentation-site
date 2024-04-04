@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C Documentation</title>
+</head>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+  color: rgb(32, 32, 32);
+}
+html,
+body {
+  min-width: 290px;
+  color: #4d4e53;
+  background-color: #ffffff;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+#navbar {
+  color: white;
+  position: fixed;
+  min-width: 200px;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  border-right: 1px solid rgba(136, 134, 134, 0.329);
+  background-color: #f7f7f7;
+}
+
+header {
+  color: black;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: thin;
+}
+
+.title {
+    color: black;
+}
+
+#main-doc header {
+  text-align: left;
+  margin: 0px;
+}
+
+#navbar ul {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+#navbar li {
+  color: gray;
+  border-top: 1px solid rgba(136, 134, 134, 0.329);
+  list-style: none;
+  width: 100%;
+  overflow: hidden;
+}
+
+#navbar a {
+  display: block;
+  padding: 7.5px 0px;
+  color: rgba(0, 0, 0, .8);
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+#main-doc {
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px;
+  margin-bottom: 110px;
+}
+
+section article {
+  color: #4d4e53;
+  margin: 15px;
+  font-size: 0.96em;
+}
+
+section li {
+  margin: 15px 0px 0px 20px;
+}
+
+code {
+  display: block;
+  text-align: left;
+  white-space: pre-line;
+  position: relative;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  background-color: rgb(240, 208, 150);
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+table {
+    background-color: #f7f7f7;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    margin-top: 15px;
+}
+
+th, tr, td {
+    border: 1px solid gray;
+    padding: 4px;
+}
+
+#note {
+  color: black;
+}
+
+#marked {
+  background-color: rgba(202, 202, 202, 0.699);
+  padding: 1px;
+  border-radius: 5%;
+  z-index: -4;
+}
+
+@media screen and (max-width: 1100px) {
+  #navbar {
+    display: none;
+  }
+  #main-doc {
+    position: absolute;
+    margin-left: 20px;
+    padding: 20px;
+    margin-bottom: 110px;
+  }
+  
+  section article {
+    color: #4d4e53;
+    margin: 15px;
+    font-size: 0.96em;
+  }
+  
+  section li {
+    margin: 15px 0px 0px 20px;
+  }
+  
+  code {
+    display: block;
+    text-align: left;
+    white-space: pre-line;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 2;
+    background-color: rgb(240, 208, 150);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    color: black;
+  }
+  
+  table {
+      background-color: #f7f7f7;
+      text-align: left;
+      border-collapse: collapse;
+      border: 1px solid gray;
+      margin-top: 15px;
+  }
+  
+  th, tr, td {
+      border: 1px solid gray;
+      padding: 4px;
+  }
+  
+  #note {
+    color: black;
+  }
+  
+  #marked {
+    background-color: rgba(202, 202, 202, 0.699);
+    padding: 1px;
+    border-radius: 5%;
+    z-index: -4;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #navbar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+  #main-doc {
+    position: absolute;
+    margin-left: 10px;
+    padding: 10px;
+    margin-bottom: 110px;
+  }
+} 
+  </style>
+<body>
+  <nav id="navbar">
+    <header class="title">C Documentation</header>
+    <ul>
+      <li>
+        <a class="nav-link" href="#c_language_introduction">C Language Introduction</a></li>
+      <li>
+        <a class="nav-link" href="#Why_learn_c">Why Learn C</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#c_and/vs_c++">C and/vs C++</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#getting_started_with_c">Getting Started With C</a>
+      </li>
+      <li><a class="nav-link" href="#Hello_world">Hello world</a></li>
+      <li><a class="nav-link" href="#statements">Statements</a></li>
+      <li><a class="nav-link" href="#variables">Variables</a></li>
+      <li>
+        <a class="nav-link" href="#format_specifiers">Format Specifiers</a>
+      </li>
+      <li><a class="nav-link" href="#real_life_examples">Real Life Examples</a></li>
+      <li><a class="nav-link" href="#data_types">Data Types</a></li>
+      <li>
+        <a class="nav-link" href="#constants">Constants</a>
+      </li>
+      <li><a class="nav-link" href="#operators">Operators</a></li>
+      <li><a class="nav-link" href="#reference_and_notice">Reference and Notice</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="c_language_introduction">
+      <header>C Language Introduction</header>
+      <article>
+        <p>
+          Developed at Bell Laboratories by Dennis Ritchie in the early 1970s C is a high-level programming language
+          that is known for its efficiency, portability, and flexibility.
+        </p>
+        <p>It is often referred to as the mother of programming language, a middle-level language because it combines
+          elements of both high-level and low-level languages. C has influenced the development of many other
+          programming languages, including C++, Java, and Python.
+        </p>
+        <p>
+          It was mainly developed as a system programming language to write the UNIX operating system, therefore making it an ideal language for developing operating systems.
+        </p>
+        <br>
+        <h2>Features of C programming:</h2>
+        <ul>
+          <p>C programming possesses several notable features that have contributed to its enduring popularity:</p>
+          <li>
+            Portability: C programs can run on a wide range of computer systems with minimal modification. This
+            portability is due to the ANSI C standard, which defines the languages syntax and semantics. As long as a
+            system has a C compiler that adheres to this standard, C code can be compiled and executed without major
+            issues.
+          </li>
+          <li>
+            Efficiency: C is known for its ability to produce highly efficient code. It allows low-level memory
+            manipulation and direct access to hardware, which is crucial in systems programming and embedded systems
+            developficiency makes C an ideal choice for developing operating systems, device drivers, and
+            performance-critical applications.
+          </li>
+          <li>
+            Flexibility: C provides a wide range of data types, operators, and libraries, allowing programmers to have
+            fine-grained control over their code. This flexibility enables developers to write code that closely matches
+            the problem they are trying to solve, making C suitable for a wide variety of applications.
+          </li>
+          <li>
+            Rich Standard Library: C comes with a comprehensive standard library that provides functions for common
+            operations like input/output, string manipulation, and mathematical calculations. These library functions
+            save time and effort for programmers by offering pre-built solutions to common programming tasks.
+          </li>
+          <li>
+            Community support: C has a vast and active community of developers, which means there are numerous online
+            resources, forums, and libraries available for those learning or working with C. This community support
+            makes it easier to find help and resources when needed.
+          </li>
+        </ul>
+        <code id="note">
+          For more information visit<a href="https://www.guvi.in/blog/what-is-c-programming/" target="_blank">guvi.in</a></code>
+      </article>
+    </section>
+
+    <section class="main-section" id="Why_learn_c">
+      <header>Why Learn C</header>
+      <article>
+        <ul>
+          <li>
+            It is one of the most popular programming languages in the world
+          </li>
+          <li>
+            If you know C, you will have no problem learning other popular programsuch as Java, Python, C++, C#, etc, as
+            the syntax is similar</li>
+          <li>
+            Helps to under the fundamentals of Computer Theories. Most of the theories related to computers like
+            Computer Networks, Compiler Designing, Computer Architecture, Operating Systems are based on C programming
+            language and requires a good knowledge of C programming if you are working on them. In the modern high level
+            languages, the machine level details are hidden from the user, so in order to work with CPU cache, memory,
+            network adapters, learning C programming is a must.</li>
+          <li>
+            C is a Middle-Level Language. The middle-level languages are somewhere between the Low-level machine
+            understandable assembly languages and High-Level user friendly languages. Being a middle-level language, C
+            reduces the gap between the low-level and high-level languages. It can be used for writing operating systems
+            as well as doing application level programming.
+          </li>
+          <li>
+            C is very fast execution time. Programs written and compiled in C execute much faster than compared to any
+            other programming language. C programming language is very fast in terms of execution as it does not have
+            any additional processing overheads such as garbage collection or preventing memory leaks etc. The
+            programmer must take care of these things on his own.
+          </li>
+          <li>
+            Embedded Programming C is extensively used in Embedded Programming. Embedded Programming is also referred to
+            as micro-controller programming, where C program is used to control micro-controllers. Microcontrollers and
+            embedded programming is widely used in auto-motives, Robotics, Hardware etc.
+          </li>
+        </ul>
+          <code id="note">
+                For more information visit <a href="https://www.google.com/amp/s/www.geeksforgeeks.org/why-learning-c-programming-is-a-must/amp/" target="_blank">geeksforgeeks.org</a>
+          </code>
+      </article>
+    </section>
+
+    <section class="main-section" id="c_and/vs_c++">
+      <header>C and/vs C++</header>
+      <article>
+        <p>
+          C and C++ are both widely used programming languages, with C being a procedural language and C++ being a
+          superset of C with additional features, including object-oriented programming (OOP) capabilities. C is known
+          for its simplicity and efficiency, often used for system programming and developing low-level software such as
+          operating systems and device drivers. C++ builds upon C by adding features like classes, inheritance,
+          polymorphism, and templates, making it suitable for a broader range of applications including game
+          development, graphical user interfaces (GUIs), and large-scale software systems. Despite their differences,
+          both languages are powerful tools with their own strengths and are commonly used in the software industry.
+        </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="getting_started_with_c">
+      <header>Getting Started With C</header>
+      <article>
+        <p>To start using C, you need two things:</p>
+        <ul>
+          <li>A compiler, like GCC, to translate the C code into a language that the computer will understand</li>
+          <li>A text editor, like Notepad, to write C code</li>
+        </ul>
+        <br>
+        <p>
+          There are many text editors and compilers to choose from in this tutorial we will use an IDE (Intergrated Development Environment) called <a href="https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download">CodeBlocks</a>.
+        </p>
+        <code id="note">
+              <p>Note: The above link provides codeblocks for Windows only for other OSes check below!</p>
+              <p>How to install for <a href="https://wiki.cdex.php/Installing_Code::Blocks_from_source_on_Linux" target="_blank">linux</a>.</p>
+              <p>How to install for <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Mac_OS_X" target="_blank">MacOS</a>.</p>
+        </code>
+      </article>
+    </section>
+    <section class="main-section" id="Hello_world">
+      <header>Hello world</header>
+      <article>
+        <p>
+          Let's create our first C file.
+        <br>
+        Open Codeblocks and go to File > New > Empty File.
+        <br>
+        Write the following C code and save the file as myfirstprogram.c (File > Save File as):
+        </p>
+        <code>
+            #include &LeftAngleBracket;stdio.h&RightAngleBracket;
+            #include &LeftAngleBracket;stdlib.h&RightAngleBracket;
+            
+            int main(void){
+               &MediumSpace;printf("Hello World!");
+               &MediumSpace;return 0;
+
+            return 0;
+            } 
+          </code>
+        <p>
+          Then, go to Build > Build and Run to run (execute) the program.
+        </p>
+        <br>
+        <h2>Example Explained</h2>
+        <ul>
+          <li>
+            Line 1:<span>#include &LeftAngleBracket;stdio.h&RightAngleBracket;</span> is a header file library that lets us work with input and output functions, such
+              as printf() (used in line 4). Header files add functionality to C programs.
+          </li>
+          <li>
+            Line 2: A blank line. C ignores white space. But we use it to make the code more readable.
+          </li>
+          <li>
+            Line 3: Anothe that always appear in a C program is main(). This is called a function. Any code inside its
+            curly brackets <span id="marked">{}</span> will be executed.
+          </li>
+          <li>
+            Line 4: printf() is a function used to output/print text to the screen. In our example, it will output
+            "Hello World!".
+          <code id="note">
+            <p>Note that: Every C statement ends with a semicolon <span id="marked">;</span></p>
+            <p>
+              Note: The body of int main() could also been written as:
+            int main(){printf("Hello World!");return 0;}
+            </p>
+            <p>
+              Remember: The compiler ignores white spaces. However, multiple lines makes the code more readable.
+            </p>
+          </code>
+          </li>
+          <li>
+            Line 5: return 0 ends the main() function
+          </li>
+          <li>
+            Line 6: Do not forget to add the closing curly bracket <span id="marked">&rbrace;</span> to actually end the main function.
+          </li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="statements">
+      <header>Statements</header>
+        <p>
+          A computer program is a list of "instructions" to be "executed" by a computer.
+          <br>
+        In a programming language, these programming instructions are called statements. e.g.
+        </p>
+        <code>
+            prinf("Hello World!");
+
+            return 0;
+        </code>
+        <p>
+          Most C programs contain many statements.
+        <br>
+        The statements are executed, one by one, in the same order as they are written: e.g
+        </p>
+        <code>
+            printf("Hello World!");
+            printf("You are getting there.");
+
+            return 0;
+        </code>
+        <p>
+          It is important that you end the statement with a semicolon <span id="marked">;</span>
+        <br>
+        If you forget the semicolon (;), an error will occur and the program will not run.
+        </p>
+      <h2>Comments</h2>
+      <p>
+        Comments can be used to explain code, and to make it more readable. It can also be used to prevent execution
+        when testing alternative code.
+      </p>
+      <p>
+        Comments can be singled-lined or multi-lined.
+      <h3>Single-line Comments</h3>
+      <p>Single-line comments start with two forward slashes <span id="marked">//</span>.
+        <br>
+        Any text between // and the end of the line is ignored by the compiler (will not be executed).
+        <br>
+        This example uses a single-line comment before a line of code:
+      <code>
+        // This is a comment
+        printf("Hello World!");
+      </code>
+      <h3>Multi-line comments</h3>
+      <p>
+        Multi-line comments start with <span id="marked">/*</span> and ends with <span id="marked">*/</span>.
+        <br>
+        Any text between /* and */ will be ignored by the compiler.
+        Example:
+      </p>
+      <code>
+          /* The code below will print the words Hello World!
+          to the screen, and it is amazing */
+          printf("Hello World!");
+      </code>
+    </section>
+    <section class="main-section" id="variables">
+      <header>Variables</header>
+      <article>
+          <p>
+            A variable is a name given to data in computing, Variables are for storing data values, like numbers and
+          characters.
+          <br>
+          In C, there are different types of variables (defined with different keywords), for example:
+          </p>
+        <ul>
+          <li><span id="marked">int</span> - stores integers (whole numbers), without decimals, such as 123 or -123</li>
+          <li><span id="marked">char</span> - stores single characters, such as 'a' or 'B'. Characters are surrounded by single quotes</li>
+          <li><span id="marked">float</span> - stores floating point numbers, with decimals, such as 19.99 or -19.99</li>
+        </ul>
+        <h2>Declaring Variables</h2>
+        <p>
+          To create a variable, specify the type and assign it a value:
+        </p>
+        <code> 
+          type variableName = value;
+          &MediumSpace;int myNum = 42;
+          &MediumSpace;float myNum = 42.3;
+          &MediumSpace;char myLetter = 'a';
+        </code>
+        <p>
+          Note that in C you have to enclose none numerical values in single quotes <span id="marked">''</span>
+          <br>
+          Where type is C types (such as int), and variableName is the name of the variable (such as x or myName). The
+          equal sign <span id="marked">=</span> is used to assign a value to the variable.
+        </p>
+        <p>
+          You can also declare a variable without assigning the value, and assign the value later:
+        </p>
+          <code>
+            //Declare a variable 
+            int myNum;
+
+            //Assign a value to the variable 
+            myNum = 15;
+          </code>
+        <p>
+          In many other programming languages (like Python, Java, and C++), you would normally use a print function to
+          display the value of a variable. However, this is not possible in C:
+          <br>
+          To output variables in C, you must get familiar with something called <a href="#format_specifier">format specifiers</a>, which you will learn about in the next chapter.
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="format_specifiers">
+      <header>Format Specifiers</header>
+      <article>
+        <p>
+          Format specifiers are used together with the printf() function to tell the compiler what type of data the
+          variable is storing. It is basically a placeholder for the variable value.
+        </p>
+        <br>
+        <p>
+          A format specifier starts with a percentage sign <span id="marked">%</span>, followed by a character.
+        </p>
+        <br>
+        <p>
+          For example, to output the value of an int variable, use the format specifier <span id="marked">%d</span> surrounded by double quotes
+          (<span id="marked">""</span>), inside the printf() function:
+        </p>
+        <code>
+          int myNum = 15;
+          printf("%d", myNum);  // Outputs 15
+        </code>
+        <br>
+        <p>
+          To print other types, use <span id="marked">%c</span> for char and <span id="marked">%f</span> for float:
+        </p>
+          <code>
+            // Create variables
+            &MediumSpace;int myNum = 15;           // Integer (whole number)
+            &MediumSpace;float myFloatNum = 5.99;  // Floating point number
+            &MediumSpace;char myLetter = 'D';       // Characters
+
+            // Print variables
+            &MediumSpace;printf("%d
+", myNum);
+            &MediumSpace;printf("%f
+", myFloatNum);
+            &MediumSpace;printf("%c
+", myLetter);
+
+            return 0;
+          </code>
+        <p>
+          To combine both text and a variable, separate them with a comma inside the printf() function:
+        </p>
+          <code>
+            int myNum = 15;
+            printf("My favorite number is: %d", myNum);
+          </code>
+        <p>
+          To print different types in a single printf() function, you can use the following:
+        </p>
+          <code>
+            int myNum = 15;
+            char myLetter = 'D';
+            printf("My number is %d and my letter is %c", myNum, myLetter);
+        </code>
+        <h2>Changing Variable Values</h2>
+        <p>
+          If you assign a new value to an existing variable, it will overwrite the previous value:
+        </p>
+          <code>
+            int myNum = 15;  // myNum is 15
+            myNum = 10;  // Now myNum is 10
+          </code>
+        <p>You can also assign the value of one variable to another:</p>
+          <code>
+            int myNum = 15;
+            int myOtherNum = 23;
+
+            // Assign the value of myOtherNum (23) to myNum
+            myNum = myOtherNum;
+
+            // myNum is now 23, instead of 15
+            printf("%d", myNum);
+          </code>
+        <p>Or copy values to empty variables:</p>
+          <code>
+            // Create a variable and assign the value 15 to it
+            int myNum = 15;
+
+            // Declare a variable without assigning it a value
+            int myOtherNum;
+
+            // Assign the value of myNum to myOtherNum
+            myOtherNum = myNum;
+
+            // myOtherNum now has 15 as a value
+            printf("%d", myOtherNum);
+          </code>
+        <h2>Adding Variables Together</h2>
+        <p>
+          To add a variable to another variable, you can use the <span id="marked">+</span> operator:
+        </p>
+          <code>
+            int x = 5;
+            int y = 6;
+            int sum = x + y;
+
+            printf("%d", sum);
+          </code>
+        </p>
+        <h2>Declaring Multiple Variables</h2>
+        <p>
+          To declare more than one variable of the same type, use a comma-separated list:
+        </p>
+          <code>
+            int x = 5, y = z = 50;
+
+            printf("%d", x + y + z);
+          </code>
+          <p>
+            You can also assign the same value to multiple variables of the same type:
+          </p>
+          <code>
+            int x, y, z;
+            x = y = z = 50;
+
+            printf("%d", x + y + z);
+          </code>
+        <h2>Variable Names</h2>
+        <p>
+          All C variables must be identified with unique names.
+          <br>
+          These unique names are called identifiers.
+          <br>
+          Identifiers can be short names (like x and y) or more descriptive names (age, sum, totalVolume).
+          <br>
+          Note: It is recommended to use descriptive names in order to create understandable and maintainable code:
+        </p>
+          <code>
+            // Good variable name
+            int minutesPerHour = 60;
+
+            // OK, but not so easy to understand what m actually issues
+            int m = 60;
+          </code>
+        <p>The general rules for naming variables are:</p>
+        <ul>
+          <li>Names can contain letters, digits and underscores</li>
+          <li>Names must begin with a letter or an underscore (_)</li>
+          <li>Names are case-sensitive (myVar and myvar are different variables)</li>
+          <li>Names cannot contain whitespaces or special characters like !, #, %, etc.</li>
+          <li><a href="https://www.ibm.com/docs/en/developer-for-zos/14.2?topic=programs-c-reserved-keywords" target="_blank" >Reserved words</a> (such as int) cannot be used as names</li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="real_life_examples">
+      <header>Real Life Examples</header>
+      <article>
+        <p>
+          Often in our examples, we simplify variable names to match their data type (myInt or myNum for int types,
+          myChar for char types, and so on). This is done to avoid confusion.
+          <br>
+          However, if you want a real-life example of how variables can be used, take a look at the following, where we
+          have made a program that stores different data of a college student:
+        </p>
+        <code>
+            #include &LeftAngleBracket;stdio.h&RightAngleBracket;
+            #include &LeftAngleBracket;stdlib.h&RightAngleBracket;
+
+            int main(){
+            // Student data
+            &MediumSpace;int studentID = 15;
+            &MediumSpace;int studentAge = 23;
+            &MediumSpace;float studentFee = 75.25;
+            &MediumSpace;char studentGrade = 'B';
+
+            // Print variablesprintf("Student id: %d
+", studentID);
+            &MediumSpace;printf("Student age: %d
+", studentAge);
+            &MediumSpace;printf("Student fee: %f
+", studentFee);
+            &MediumSpace;printf("Student grade: %c
+", studentGrade);
+            
+            return 0;
+          }
+        </code>
+        <p>
+          In this real-life example, we create a program to calculate the area of a rectangle (by multiplying the length
+          and width):
+        </p>
+          <code>
+              #include &LeftAngleBracket;stdio.h&RightAngleBracket;
+              #include &LeftAngleBracket;stdlib.h&RightAngleBracket;
+
+              int main(){
+              // Create integer variables
+              &MediumSpace;int length = 4;
+              &MediumSpace;int width = 6;
+              &MediumSpace;int area;
+
+              // Calculate the area of a rectangle area = length * width;
+              // Print the variables
+              &MediumSpace;printf("Length is: %d
+", length);
+              &MediumSpace;printf("Width is: %d
+", width);
+
+              &MediumSpace;printf("Area of the rectangle is: %d", area);
+
+              return 0;
+            }
+          </code>
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="data_types">
+      <header>Data Types</header>
+      <p>
+        As explained in the <a href="#variables">variable chapter</a>, a variable in C must be a specified data type,
+        and you must use a format specifier inside the printf() function to display it.
+      </p>
+      <h2>Types of data types in C</h2>
+      <article>
+        <h3>Primary Data Types</h3>
+        <p>
+          The C programming language has five primitive or primary data types.
+        </p>
+        <ul>
+          <li>
+            <p>
+              <span id="marked">Integer (int):</span> Refers to positive and negative whole numbers (without decimal), such as 10, 12, 65, 3400, etc 
+            </p>
+            <code>
+                #include &LeftAngleBracket;stdio.h> &RightAngleBracket;
+                #include &LeftAngleBracket;stdlib.h> &RightAngleBracket; 
+
+                void main(){ 
+                 &MediumSpace;int i = 5; 
+                 &MediumSpace;printf("The integer value is: %d
+", i); 
+
+                 return 0;
+                }
+            </code>
+          </li>
+          <li>
+            <p>
+              <span id="marked">Character (char):</span> Refers to all the ASCII character sets within single quotes such as ‘a’, ‘A’, etc.
+            </p>
+            <code>
+                #include &LeftAngleBracket;stdio.h> &RightAngleBracket; 
+                #include &LeftAngleBracket;stdlib.h> &RightAngleBracket;
+
+                void main(){ 
+                &MediumSpace;char c = 'b'; 
+                &MediumSpace;printf("The character value is: %c 
+", c); 
+
+                return 0;
+                }
+            </code>
+            <p>
+              Note: If you try to store more than a single character, it will only print the last Character
+              <br>
+              To store multiple characters (or whole words), use <a href="#strings">strings</a> (which you will learn
+              more about in a later chapter)
+            </p>
+            <code>
+                #include &LeftAngleBracket;stdio.h> &RightAngleBracket; 
+                #include &LeftAngleBracket;stdlib.h> &RightAngleBracket;
+
+                int main(){
+                &MediumSpace;char myText[] = "Hello";
+                &MediumSpace;printf("%s", myText);
+
+                return 0;
+                }
+            </code>
+          </li>
+          <li>
+            <p>
+              <span id="marked">Floating-point (float):</span> Refers to all the real number values or decimal points, such as 3.14, 10.09,
+              5.34, etc.
+            </p>
+            <code>
+                #include &LeftAngleBracket;stdio.h> &RightAngleBracket;
+                #include &LeftAngleBracket;stdlib.h> &RightAngleBracket;   
+
+                void main(){
+                &MediumSpace;float f = 7.2357; 
+                &MediumSpace;printf("The float value is: %f 
+", f);
+
+                return 0;
+                }
+            </code>
+          </li>
+          <li>
+            <p>
+              <span id="marked">Double (double):</span> Used when the range exceeds the numeric values that do not come under either
+              floating-point or integer data type.
+            </p>
+            <code>
+                #include &LeftAngleBracket;stdio.h> &RightAngleBracket;  
+                #include &LeftAngleBracket;stdlib.h> &RightAngleBracket;
+                void main(){ 
+                &MediumSpace;d = 71.2357455; 
+                &MediumSpace;printf("The double value is: %lf 
+", d); 
+                return 0;
+                }
+            </code>
+          </li>
+        </ul>
+        <h3>Data Type Modifiers</h3>
+        <p>
+          Modifiers are C keywords that modify the meaning of fundamental data types. It indicates how much memory will
+          be allocated to a variable. Modifiers are prefixed with fundamental data types to adjust the memory allocated
+          for a variable. C Programming Language has four data type modifiers:
+        </p>
+        <ul>
+          <li>
+            long
+          </li>
+          <li>
+            short
+          </li>
+          <li>
+            signed
+          </li>
+          <li>
+            Unsigned
+          </li>
+        </ul>
+        <p>These modifiers make the memory required for primary data types more precise.</p>
+        <h3>Size Of Data Types In C</h3>
+        <p>
+          The size of each data type is defined in bits or bytes (8 bits). Each data type in C is associated with a
+          specific range of values defined as below:
+        </p>
+        <div class="range-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Format Specifier</th>
+                <th>Range</th>
+                <th>Size in bit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>unsigned char</td>
+                <td>%c</td>
+                <td>0 to 255</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>char</td>
+                <td>%c</td>
+                <td>-127 to 127</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>signed char</td>
+                <td>%c</td>
+                <td>-127 to 127</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>int</td>
+                <td>%d, %i</td>
+                <td>-32,767 to 32,767</td>
+                <td>16 or 32</td>
+              </tr>
+              <tr>
+                <td>unsigned int</td>
+                <td>%u</td>
+                <td>0 to 65,535</td>
+                <td>16 or 32</td>
+              </tr>
+              <tr>
+                <td>signed int</td>
+                <td>%d, %i</td>
+                <td>-32,767 to 32,767 (same as int)</td>
+                <td>16 or 32</td>
+              </tr>
+              <tr>
+                <td>short int</td>
+                <td>%hd</td>
+                <td>-32,767 to 32,767</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>unsigned short int</td>
+                <td>%hu</td>
+                <td>0 to 65,535</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>signed short int</td>
+                <td>%hd</td>
+                <td>-32,767 to 32,767</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>long int</td>
+                <td>%ld, %li</td>
+                <td>-2,147,483,647 to 2,147,483,647</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>long long int</td>
+                <td>%lld, %lli</td>
+                <td>-(2<sup>63</sup>) to (2<sup>63</sup>)-1</td>
+                <td>64</td>
+              </tr>
+              <tr>
+                <td>signed long int</td>
+                <td>%ld, %li</td>
+                <td>-2,147,483,647 to 2,147,483,647</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>unsigned long int</td>
+                <td>%lu</td>
+                <td>0 to 4,294,967,295</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>unsigned long long int</td>
+                <td>%llu</td>
+                <td>(2<sup>63</sup>)-1</td>
+                <td>64</td>
+              </tr>
+              <tr>
+                <td>float</td>
+                <td>%f</td>
+                <td>1E-37 to 1E+37 along with six digits of the precisions</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>double</td>
+                <td>%lf</td>
+                <td>1E-37 to 1E+37 along with six digits of the precisions</td>
+                <td>64</td>
+              </tr>
+              <tr>
+                <td>long double</td>
+                <td>%Lf</td>
+                <td>1E-37 to 1E+37 along with six digits of the precisions</td>
+                <td>80</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <code>for more information visit <a href="https://www.shiksha.com/online-courses/articles/data-types-in-c-programming-with-examples/" target="_blank">shiksha.com</a></code>
+        <h2>Derived Data Types</h2>
+        <p>
+          Derived data types are primary data types that are grouped together. You can group many elements of similar
+          data types. These data types are defined by the user. The following are the derived data types in C:
+        </p>
+        <ul>
+          <li>Array</li>
+          <li>Pointers</li>
+          <li>Structure</li>
+          <li>Union</li>
+        </ul>
+        <h2>Boolean Data Types</h2>
+        <p>These (Derived and Boolean Data Types) will be discussed more in the later chapters</p>
+        <h2>Void Data Types</h2>
+        <p>
+          The void is just an empty data type that depicts that no value is available. Typically, the void is used for
+          functions. When we declare a function as void, it doesn’t have to return anything.
+        </p>
+        <ul>
+          <p>Void is used in three situations:</p>
+          <li>Function returns as void – A function with no return value will have the return type as void.</li>
+          <li>Function arguments as void – A function with no parameter can accept the void.</li>
+          <li>Pointers to void – It represents the address of an object, but not its type.</li>
+          <code>
+            //This function will not return any value to the calling function.
+            void sum(int a, int b)
+          </code>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="constants">
+      <header>Constants</header>
+      <article>
+        <p>
+        If you don't want others (or yourself) to change existing variable values, you can use the const keyword.
+        <br>
+        This will declare the variable as "constant", which means unchangeable and read-only:
+        </p>
+        <code>
+            const int myNum = 15;  // myNum will always be 15
+            myNum = 10;  // error: assignment of read-only variable 'myNum'
+        </code>
+        <p>You should always declare the variable as constant when you have values that are unlikely to change:</p>
+        <code>
+            const int minutesPerHour = 60;
+            const float PI = 3.14;
+        </code>
+        <p>When you declare a constant variable, it must be assigned with a value:</p>
+        <code>
+            //like this
+            const int minutesPerHour = 60;
+
+            //This however, will not work:
+            const int minutesPerHour;
+            minutesPerHour = 60; // error
+        </code>
+        <p>
+          Another thing about constant variables, is that it is considered good practice to declare them with uppercase.
+          <br>
+          It is not required, but useful for code readability and common for C programmers: 
+        </p>
+        <code>
+            const int BIRTHYEAR = 1980;
+        </code>
+      </article>
+    </section>
+    <section class="main-section" id="operators">
+      <header>Operators</header>
+      <article>
+        <p>
+          Operators are used to perform operations on variables and values.
+          <br>
+          In the example below, we use the + operator to add together two values:
+        </p>
+        <code>
+          int myNum = 100 + 50;
+        </code>
+        <p>
+          Although the + operator is often used to add together two values, like in the example above, it can also be used
+        to add together a variable and a value, or a variable and another variable:
+        </p>
+        <code>
+            int sum1 = 100 + 50;        // 150 (100 + 50)
+            int sum2 = sum1 + 250;      // 400 (150 + 250)
+            int sum3 = sum2 + sum2;     // 800 (400 + 400)
+           </code>
+        <p>C divides the operators into the following groups:</p>
+        <ul>
+          <li>Arithmetic Operators</li>
+          <li>Assignement Operators</li>
+          <li>Comparison Operators</li>
+          <li>Logical Operators</li>
+          <li>Bitwise Operators</li>
+        </ul>
+        <h2>Arithmetic Operators</h2>
+        <p>Arithmetic operators are used to perform common mathematical operations.</p>
+        <p>In the following example we are going to use the values :
+          <code>
+            int a = 5;
+            int b = 10;
+
+            // variable c is not declared
+            int c;
+           </code>
+        </p>
+        <ul>
+          <li>
+            <p>Addition: Two values are added together using the <span id="marked">+</span> operator. To calculate the value of c in this
+              example, we must add a and b. We then display the outcome on the screen by using the printf() function.
+            </p>
+            <code>
+                  #include &RightAngleBracket;stdio.h&LeftAngleBracket;
+                  #include &RightAngleBracket;stdlib.h&LeftAngleBracket;
+
+                    int main() {
+                    &MediumSpace;int a = 5;
+                    &MediumSpace;int b = 10;
+                    &MediumSpace;int c = a + b;
+
+                    &MediumSpace;printf("%d", c);
+
+                    &MediumSpace;return 0;
+                    }
+                  //We have added a and b and stored the results in c
+                  //15 will be printed out as the answer
+              </code>
+          </li>
+          <li>
+            <p>Subtraction: We subtract a value from another using the <span id="marked">-</span> operator in mathematics. Here, the value of c
+              is obtained in this example by subtracting a from b. Then, we display the outcome on the screen by using
+              the printf() function.
+            </p>
+            <code>
+              #include &RightAngleBracket;stdio.h&LeftAngleBracket;
+              #include &RightAngleBracket;stdlib.h&LeftAngleBracket;
+
+                    int main() {
+                    &MediumSpace;int a = 5;
+                    &MediumSpace;int b = 10;
+                    &MediumSpace;int c = b - a;
+
+                    &MediumSpace;printf("%d", c);
+
+                    &MediumSpace;return 0;
+                    }
+              </code>
+          </li>
+          <li>
+            <p>Multiplication: Two numbers are multiplied by each other using the <span id="marked">*</span> operator. The value of c is obtained
+              in this example by multiplying a and b. then we display the outcome on the screen by using the printf()
+              function.</p>
+            <code>
+              #include &RightAngleBracket;stdio.h&LeftAngleBracket;
+              #include &RightAngleBracket;stdlib.h&LeftAngleBracket;
+
+                int main() {
+                &MediumSpace;int a = 5;
+                &MediumSpace;int b = 10;
+                &MediumSpace;int c = a * b;
+
+                &MediumSpace;printf("%d", c);
+
+                &MediumSpace;return 0;
+                }
+              </code>
+          </li>
+          <li>
+            <p>Division: To divide two values by each other, use the <span id="marked">/</span> operator. To determine the value of d in this
+              example, we divide a by b. Be aware that we cast a and b to float in order to guarantee a result in
+              floating-point. The output with two decimal places is then displayed on the screen using the printf()
+              function.
+            </p>
+            <code>
+              #include &RightAngleBracket;stdio.h&LeftAngleBracket;
+              #include &RightAngleBracket;stdlib.h&LeftAngleBracket;
+
+                int main() {
+                &MediumSpace;int a = 5;
+                &MediumSpace;int b = 10;
+                &MediumSpace;int c = b / a;
+
+                &MediumSpace;printf("%d", c);
+
+                &MediumSpace;return 0;
+                }
+            </code>
+          </li>
+          <li>
+            <p>Modulus: We use the <span id="marked">%</span> operator to determine the remaining part of a division operation. In this case, we
+              divide a by b to get the remainder. If there is no leftover, then b is a factor of a. The printf()
+              function is then used to show the outcome on the screen.</p>
+            <code>
+              #include &RightAngleBracket;stdio.h&LeftAngleBracket;
+              #include &RightAngleBracket;stdlib.h&LeftAngleBracket;
+
+                int main() {
+                &MediumSpace;int a = 5;
+                &MediumSpace;int b = 2;
+                &MediumSpace;int c = a % b;
+
+                &MediumSpace;printf("%d", c);
+
+                &MediumSpace;return 0;
+                }
+                //The remainder is the answer which in this case is 1.
+              </code>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="reference_and_notice">
+      <header>Reference and Notice</header>
+      <article>
+        <ul>
+          <li>
+            <span id="marked">Note:</span> This is an unfinished project, for contributions visit my <a href="http://">GitHub</a> account.
+          </li>
+          <li>
+            For any complaint or suggestion email <a href="mailto:mlee52230@gmail.com">me</a>.
+          </li>
+          <li>
+            List of sites where the documentations are from:
+            <ul>
+              <li>
+                <a href="https://www.w3schools.com/c/index.php" target="_blank">w3schools.com</a>
+              </li>
+              <li>
+                <a href="https://www.guru99.com/c-gcc-install.html" target="_blank">guru99.com</a>
+              </li>
+              <li>
+                <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Mac_OS_X" target="_blank">codeblocks.org</a>
+              </li>
+              <li>
+                <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux" target="_blank">codeblocks.org</a>
+              </li>
+              <li>
+                <a href="https://www.geeksforgeeks.org/batch/C%20Programming?_gl=1*1flrq5y*_ga*UlJlVlF0VkxHWmh3U21OWV9lMXMzTGxfc3lRNERDZFFXcWd5S0xiclRqZFNWYXQ4ZkVsaU1VWWxLbk9TNGJyeA..*_ga_E752F18V9F*MTcxMjE1NTQ4Ny4xLjEuMTcxMjE1NjU0Ny4wLjAuMA.." target="_blank">geeksforgeeks.com</a>
+              </li>
+              <li>
+                <a href="https://www.shiksha.com/online-courses/articles/data-types-in-c-programming-with-examples/#:~:text=There%20are%20four%20basic%20data,Int%2C%20Float%2C%20and%20Double." target="_blank">shiksha.com</a>
+              </li>
+              <li>
+                <a href="https://www.guvi.in/blog/what-is-c-programming/" target="_blank">guvi.in</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
