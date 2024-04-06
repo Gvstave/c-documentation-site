@@ -25,6 +25,10 @@ body {
   line-height: 1.5;
 }
 
+.nav-arrow {
+  display: none;
+}
+
 #navbar {
   color: white;
   position: fixed;
@@ -39,14 +43,14 @@ body {
 
 header {
   color: black;
-  margin: 10px;
   text-align: center;
   font-size: 1.8em;
   font-weight: thin;
 }
-
+    
 .title {
-    color: black;
+  color: black;
+  margin: 5px;
 }
 
 #main-doc header {
@@ -98,15 +102,15 @@ code {
   display: block;
   text-align: left;
   white-space: pre-line;
-  position: relative;
+  /*position: relative;*/
   word-break: normal;
   word-wrap: normal;
   line-height: 2;
   background-color: rgb(240, 208, 150);
   padding: 15px;
   margin: 10px;
-  border-radius: 5px;
   color: black;
+  font-weight: bold;
 }
 
 table {
@@ -124,6 +128,7 @@ th, tr, td {
 
 #note {
   color: black;
+  border-left: 2px solid green:
 }
 
 #marked {
@@ -132,7 +137,8 @@ th, tr, td {
   border-radius: 5%;
   z-index: -4;
 }
-
+    
+/*Media query for small laptops and tablets screen*/
 @media screen and (max-width: 1100px) {
   #navbar {
     display: none;
@@ -142,6 +148,16 @@ th, tr, td {
     margin-left: 20px;
     padding: 20px;
     margin-bottom: 110px;
+  }
+
+  .main-section header {
+    position: sticky;
+    position: --webkit-sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
   }
   
   section article {
@@ -194,10 +210,11 @@ th, tr, td {
   }
 }
 
+/*Media query for phablets and phones screen*/
 @media screen and (max-width: 500px) {
   #navbar {
     width: 100%;
-    height: auto;
+    height: 100vh;
     position: relative;
     display: block;
     top: 0;
@@ -209,6 +226,22 @@ th, tr, td {
     margin-left: 10px;
     padding: 10px;
     margin-bottom: 110px;
+  }
+  .main-section header {
+  color: black;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: thin;
+  position: static;
+  }
+  
+  .nav-arrow {
+    cursor: unset;
+    padding-top: 3.5vh;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 } 
   </style>
@@ -240,6 +273,7 @@ th, tr, td {
       </li>
       <li><a class="nav-link" href="#operators">Operators</a></li>
       <li><a class="nav-link" href="#reference_and_notice">Reference and Notice</a></li>
+      <li class="nav-arrow"><a href="#">&ArrowUpsideDownTriangle</a></li>
     </ul>
   </nav>
   <main id="main-doc">
@@ -328,8 +362,7 @@ th, tr, td {
             embedded programming is widely used in auto-motives, Robotics, Hardware etc.
           </li>
         </ul>
-          <code id="note">
-                For more information visit <a href="https://www.google.com/amp/s/www.geeksforgeeks.org/why-learning-c-programming-is-a-must/amp/" target="_blank">geeksforgeeks.org</a>
+          <code id="note">For more information visit <a href="https://www.google.com/amp/s/www.geeksforgeeks.org/why-learning-c-programming-is-a-must/amp/" target="_blank">geeksforgeeks.org</a>
           </code>
       </article>
     </section>
@@ -361,10 +394,9 @@ th, tr, td {
         <p>
           There are many text editors and compilers to choose from in this tutorial we will use an IDE (Intergrated Development Environment) called <a href="https://sourceforge.net/projects/codeblocks/files/Binaries/20.03/Windows/codeblocks-20.03mingw-setup.exe/download">CodeBlocks</a>.
         </p>
-        <code id="note">
-              <p>Note: The above link provides codeblocks for Windows only for other OSes check below!</p>
-              <p>How to install for <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux" target="_blank">linux</a>.</p>
-              <p>How to install for <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Mac_OS_X" target="_blank">MacOS</a>.</p>
+        <code id="note">Note: The above link provides codeblocks for Windows only for other OSes check below!
+              How to install for <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux" target="_blank">linux</a>.
+              How to install for <a href="https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Mac_OS_X" target="_blank">MacOS</a>.
         </code>
       </article>
     </section>
@@ -409,15 +441,12 @@ th, tr, td {
           <li>
             Line 4: printf() is a function used to output/print text to the screen. In our example, it will output
             "Hello World!".
-          <code id="note">
-            <p>Note that: Every C statement ends with a semicolon <span id="marked">;</span></p>
-            <p>
+          <code id="note">Note that: Every C statement ends with a semicolon <span id="marked">;</span>
+           
               Note: The body of int main() could also been written as:
-            int main(){printf("Hello World!");return 0;}
-            </p>
-            <p>
+              int main(){printf("Hello World!");return 0;}
+           
               Remember: The compiler ignores white spaces. However, multiple lines makes the code more readable.
-            </p>
           </code>
           </li>
           <li>
@@ -431,6 +460,7 @@ th, tr, td {
     </section>
     <section class="main-section" id="statements">
       <header>Statements</header>
+      <article>
         <p>
           A computer program is a list of "instructions" to be "executed" by a computer.
           <br>
@@ -486,6 +516,7 @@ th, tr, td {
           to the screen, and it is amazing */
           printf("Hello World!");
       </code>
+      </article>
     </section>
     <section class="main-section" id="variables">
       <header>Variables</header>
