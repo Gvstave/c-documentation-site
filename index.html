@@ -42,6 +42,7 @@ body {
 }
 
 header {
+  top: 0;
   color: black;
   text-align: center;
   font-size: 1.8em;
@@ -50,12 +51,12 @@ header {
     
 .title {
   color: black;
-  margin: 5px;
+  padding: 5px;
 }
 
 #main-doc header {
   text-align: left;
-  margin: 0px;
+  maargin: 0px;
 }
 
 #navbar ul {
@@ -128,7 +129,7 @@ th, tr, td {
 
 #note {
   color: black;
-  border-left: 2px solid green;
+  border-left: 3px solid green;
   line-height: 1.5;
 }
 
@@ -153,12 +154,13 @@ th, tr, td {
 
   .main-section header {
     position: sticky;
-    position: --webkit-sticky;
+    position: -webkit-sticky;
     top: 0;
     right: 0;
     left: 0;
     width: 100%;
     height: 40px;
+    background-color: #ffffff;
   }
   
   section article {
@@ -179,7 +181,6 @@ th, tr, td {
     word-break: normal;
     word-wrap: normal;
     line-height: 2;
-    background-color: rgb(240, 208, 150);
     padding: 15px;
     margin: 10px;
     color: black;
@@ -220,14 +221,12 @@ th, tr, td {
     top: 0;
     right: 0;
     left: 0;
+    border: none;
   }
-  #main-doc {
-    position: absolute;
-    margin-left: 10px;
-    padding: 10px;
-    margin-bottom: 110px;
+
+  .navbar header {
+    top: 0;
   }
-  
   .main-section header {
   color: black;
   margin: 10px;
@@ -239,10 +238,16 @@ th, tr, td {
   
   .nav-arrow {
     cursor: unset;
-    padding-top: 4.5vh;
+    padding-top: 6vh;
     display: block;
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+  #main-doc {
+    position: absolute;
+    margin-left: 10px;
+    padding: 10px;
+    margin-bottom: 110px;
   }
 } 
   </style>
@@ -324,8 +329,7 @@ th, tr, td {
             makes it easier to find help and resources when needed.
           </li>
         </ul>
-        <code id="note">
-          For more information visit <a href="https://www.guvi.in/blog/what-is-c-programming/" target="_blank">guvi.in</a></code>
+        <code id="note">For more information visit <a href="https://www.guvi.in/blog/what-is-c-programming/" target="_blank">guvi.in</a></code>
       </article>
     </section>
 
